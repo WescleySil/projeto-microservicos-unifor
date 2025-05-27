@@ -10,11 +10,9 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 Route::post('/login', [AuthController::class, 'login']);
-
-Route::get('/is-logged-in', [AuthController::class, 'isLoggedIn'])->middleware('auth:sanctum');
+Route::post('/users', [UserController::class, 'store']);
 
 Route::prefix('users')->name('users.')->middleware('auth:sanctum')->group(function () {
-    Route::post('/', [UserController::class, 'store']);
     Route::get('/', [UserController::class, 'index']);
     Route::delete('/{user}', [UserController::class, 'destroy']);
 });

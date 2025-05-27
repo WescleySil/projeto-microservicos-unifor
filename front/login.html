@@ -13,7 +13,7 @@
     <div class="container">
     <h1>Faça login</h1>
 
-    <form action="" method="POST">
+    <form id="form-login">
         <label for="email">Email:</label><br>
         <input type="email" id="email" name="email" required><br><br>
 
@@ -25,5 +25,15 @@
 
     <p>Não tem uma conta? <a href="cadastro.html">Cadastre-se aqui</a></p>
 </div>
+    <script src="auth.js"></script>
+    <script>
+        document.querySelector("#form-login").addEventListener("submit", function(e) {
+            e.preventDefault();
+            const email = document.querySelector("#email").value;
+            const senha = document.querySelector("#password").value;
+            fazerLogin(email, senha);
+        });
+    </script>
+
 </body>
 </html>
