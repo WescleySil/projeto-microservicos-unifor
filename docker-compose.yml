@@ -1,0 +1,90 @@
+version: '3.8'
+
+services:
+    auth-service:
+        build:
+            context: ./auth-service
+        container_name: auth-service
+        volumes:
+            -   ./auth-service:/var/www
+        ports:
+            - "8001:80"
+        environment:
+            DB_HOST: auth-db
+            DB_DATABASE: auth
+            DB_USERNAME: root
+            DB_PASSWORD: root
+        depends_on:
+            - auth-db
+
+    auth-db:
+        image: mysql:8.0
+        container_name: auth-db
+        environment:
+            MYSQL_DATABASE: auth
+            MYSQL_ROOT_PASSWORD: root
+        volumes:
+            - auth-data:/var/lib/mysql
+
+    horta-service:
+        build:
+            context: ./horta-service
+        container_name: horta-service
+        volumes:
+            - ./horta-service:/var/www
+        ports:
+            - "8002:80"
+        environment:
+            DB_HOST: horta-db
+            DB_DATABASE: horta
+            DB_USERNAME: root
+            DB_PASSWORD: root
+        depends_on:
+            - horta-db
+
+    horta-db:
+        image: mysql:8.0
+        container_name: horta-db
+        environment:
+            MYSQL_DATABASE: horta
+            MYSQL_ROOT_PASSWORD: root
+        volumes:
+            - horta-data:/var/lib/mysql
+
+    relatorio-service:
+        build:
+            context: ./relatorio-service
+        container_name: relatorio-service
+        volumes:
+            - ./relatorio-service:/var/www
+        ports:
+            - "8003:80"
+        environment:
+            DB_HOST: relatorio-db
+            DB_DATABASE: relatorio
+            DB_USERNAME: root
+            DB_PASSWORD: root
+        depends_on:
+            - relatorio-db
+
+    relatorio-db:
+        image: mysql:8.0
+        container_name: relatorio-db
+        environment:
+            MYSQL_DATABASE: relatorio
+            MYSQL_ROOT_PASSWORD: root
+        volumes:
+            - relatorio-data:/var/lib/mysql
+
+    frontend:
+        image: nginx:alpine
+        container_name: frontend
+        ports:
+            - "3000:80"
+        volumes:
+            - ./front:/usr/share/nginx/html:ro
+
+volumes:
+    auth-data:
+    horta-data:
+    relatorio-data:

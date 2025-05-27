@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="style.css" />
+  <title>Smart Garden</title>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">
+      <img src="./imagens/growth.png" alt="Logo Smart Garden" />
+    </div>
+    <ul class="bar">
+      <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+      <li class="nav-item"><a href="minhas-hortas.html" class="nav-link">Minhas Hortas</a></li>
+      <li class="nav-item"><a href="plantas.html" class="nav-link">Plantas</a></li>
+      <li class="nav-item"><a href="anotacoes.html" class="nav-link">Anotações</a></li>
+      <li class="nav-item"><a href="relatorios.html" class="nav-link">Relatórios</a></li>
+      <li class="nav-item"><a href="login.html" class="nav-link">Login</a></li>
+    </ul>
+
+    <div class="mobile-menu-icon">
+      <button onclick="menuShow()"><img class="icon" src="./imagens/menu.png" alt="Menu" /></button>
+    </div>
+  </nav>
+
+  <div class="mobile-menu">
+    <ul class="bar">
+      <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+      <li class="nav-item"><a href="minhas-hortas.html" class="nav-link">Minhas Hortas</a></li>
+      <li class="nav-item"><a href="plantas.html" class="nav-link">Plantas</a></li>
+      <li class="nav-item"><a href="anotacoes.html" class="nav-link">Anotações</a></li>
+      <li class="nav-item"><a href="relatorios.html" class="nav-link">Relatórios</a></li>
+      <li class="nav-item"><a href="login.html" class="nav-link">Login</a></li>
+    </ul>
+  </div>
+
+  <hr />
+
+  <section class="hero">
+    <div class="overlay"></div>
+    <img src="./imagens/HortaVertical.jpg" alt="Vertical-Garden" />
+
+    <div class="hero-text">
+      <h1>Smart Garden</h1>
+      <h2>Seu plantio na palma da mão</h2>
+      <button class="btn" onclick="location.href='minhas-hortas.html'">Ver minhas hortas</button>
+    </div>
+  </section>
+
+  <main>
+    <section class="main-sections">
+      <!-- Informações Gerais -->
+      <div class="card-box info-geral">
+        <h3>Informações Gerais</h3>
+        <div class="card">
+          <div class="card1">Número de hortas: <span id="numHortas"></span></div>
+          <div class="card2">Plantas cadastradas: <span id="numPlantas"></span></div>
+          <div class="card3">Última atualização: <span id="ultimaAtualizacao"></span></div>
+          <div class="card4">Tarefas pendentes: <span id="tarefasPendentes"></span></div>
+        </div>
+      </div>
+  
+      <!-- Relatório da Horta -->
+      <div class="card-box relatorio ypp" id="relatorioIA">
+        <h3>Análise Geral dos Relatórios</h3>
+        <p>
+        </p>
+      </div>
+  
+      <!-- Clima -->
+      <div id="clima" class="card-box clima-container">
+        <div class="clima-header">
+          <h3>Clima</h3>
+          <img id="clima-icon" alt="Ícone do clima" />
+        </div>
+      
+        <div class="clima-info">
+          <p><strong>Temperatura:</strong> <span id="clima-temp">--°C</span></p>
+          <p><strong>Condição:</strong> <span id="clima-condicao">Carregando...</span></p>
+          <p><strong>Umidade:</strong> <span id="clima-umidade">--%</span></p>
+          <p><strong>Precipitação:</strong> <span id="clima-precipitacao">--%</span></p>
+          <p><strong>Vento:</strong> <span id="clima-vento">-- km/h</span></p>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+
+  <footer>
+    <p>&copy; 2025 Smart Garden.</p>
+  </footer>
+  <script src="menu.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

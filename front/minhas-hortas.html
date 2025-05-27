@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="dados.css" />
+  <title>Minhas Hortas</title>
+</head>
+<body>
+  <nav>
+    <div class="logo">
+      <img src="./imagens/growth.png" alt="Logo Smart Garden" />
+    </div>
+    <ul class="bar">
+      <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+      <li class="nav-item"><a href="minhas-hortas.html" class="nav-link">Minhas Hortas</a></li>
+      <li class="nav-item"><a href="plantas.html" class="nav-link">Plantas</a></li>
+      <li class="nav-item"><a href="anotacoes.html" class="nav-link">Anotações</a></li>
+      <li class="nav-item"><a href="relatorios.html" class="nav-link">Relatórios</a></li>
+      <li class="nav-item"><a href="login.html" class="nav-link">Login</a></li>
+    </ul>
+
+    <div class="mobile-menu-icon">
+      <button onclick="menuShow()"><img class="icon" src="./imagens/menu.png" alt="Menu" /></button>
+    </div>
+  </nav>
+
+  <div class="mobile-menu">
+    <ul class="bar">
+      <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+      <li class="nav-item"><a href="minhas-hortas.html" class="nav-link">Minhas Hortas</a></li>
+      <li class="nav-item"><a href="plantas.html" class="nav-link">Plantas</a></li>
+      <li class="nav-item"><a href="anotacoes.html" class="nav-link">Anotações</a></li>
+      <li class="nav-item"><a href="relatorios.html" class="nav-link">Relatórios</a></li>
+      <li class="nav-item"><a href="login.html" class="nav-link">Login</a></li>
+    </ul>
+  </div>
+
+  <hr />
+
+  <h1>Minhas Hortas</h1>
+  <form action="" method="POST">
+    <input type="text" name="nome" placeholder="Nome da Horta" required />
+    <input type="date" name="data_plantio" required />
+    <textarea name="descricao" placeholder="Descrição da Horta" required></textarea>
+    <button type="submit">Adicionar Horta</button>
+  </form>
+
+  <h2>Minhas Hortas Registradas</h2>
+
+  <script src="menu.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
