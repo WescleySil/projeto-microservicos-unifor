@@ -46,7 +46,7 @@
 
   
   <h1>Plantas Cadastradas</h1>
-  <form action="" method="POST">
+  <form id="form-planta">
     <input type="text" name="nome" placeholder="Nome da Planta" required />
     <input type="text" name="tipo" placeholder="Tipo de Planta" required />
     <input type="date" name="data_plantio" required />
@@ -55,7 +55,13 @@
 
   <h2>Plantas Registradas</h2>
 
+  <div id="lista-plantas"></div>
+
   <script src="menu.js"></script>
   <script src="script.js"></script>
+  <script src="plant.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", getPlantas);
+  </script>
 </body>
 </html>
