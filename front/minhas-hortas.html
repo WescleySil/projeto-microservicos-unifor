@@ -44,7 +44,7 @@
   <hr />
 
   <h1>Minhas Hortas</h1>
-  <form action="" method="POST">
+  <form id="form-horta">
     <input type="text" name="nome" placeholder="Nome da Horta" required />
     <input type="date" name="data_plantio" required />
     <textarea name="descricao" placeholder="Descrição da Horta" required></textarea>
@@ -53,7 +53,13 @@
 
   <h2>Minhas Hortas Registradas</h2>
 
+  <div id="lista-hortas"></div>
+
   <script src="menu.js"></script>
   <script src="script.js"></script>
+  <script src="garden.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", getHortas);
+  </script>
 </body>
 </html>

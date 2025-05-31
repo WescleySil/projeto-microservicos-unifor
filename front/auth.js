@@ -40,7 +40,7 @@ async function fazerLogin(email, senha) {
         }
 
         const data = await response.json();
-        localStorage.setItem("token", data.token);
+        await localStorage.setItem("token", data.data.token);
         alert("Login realizado com sucesso!");
         window.location.href = "index.html";
     } catch (err) {

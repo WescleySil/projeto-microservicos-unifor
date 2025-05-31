@@ -15,6 +15,15 @@ body {
     padding: 2rem;
   }
 
+.horta-card {
+  border: 1px dashed whitesmoke;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 15px;
+  background: #ae7628;
+}
+
+
   nav {
     display: flex;
     justify-content: space-between;
@@ -181,3 +190,4 @@ body {
     overflow-x: auto;
     white-space: nowrap;
   }
+

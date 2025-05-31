@@ -5,8 +5,8 @@ use App\Http\Controllers\API\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/user', function (Request $request) {
-    return $request->user();
+Route::get('/me', function (Request $request) {
+    return response()->json($request->user());
 })->middleware('auth:sanctum');
 
 Route::post('/login', [AuthController::class, 'login']);
