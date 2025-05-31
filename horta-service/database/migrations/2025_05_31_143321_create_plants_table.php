@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('plant_type');
-            $table->date('plant_date');
+            $table->date('planting_date');
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
             $table->softDeletes();

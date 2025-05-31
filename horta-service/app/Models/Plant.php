@@ -9,7 +9,7 @@ class Plant extends Model
     protected $fillable = [
         'name',
         'plant_type',
-        'plant_date',
+        'planting_date',
         'user_id',
     ];
 }
