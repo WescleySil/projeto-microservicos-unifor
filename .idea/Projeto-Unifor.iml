@@ -352,6 +352,7 @@
       <excludeFolder url="file://$MODULE_DIR$/relatorio-service/vendor/vlucas/phpdotenv" />
       <excludeFolder url="file://$MODULE_DIR$/relatorio-service/vendor/voku/portable-ascii" />
       <excludeFolder url="file://$MODULE_DIR$/relatorio-service/vendor/webmozart/assert" />
+      <excludeFolder url="file://$MODULE_DIR$/relatorio-service/vendor/laravel/sanctum" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

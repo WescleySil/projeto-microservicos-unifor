@@ -5,14 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Garden extends Model
+class Note extends Model
 {
-    use SoftDeletes;
+    use softDeletes;
 
     protected $fillable = [
-        'name',
-        'description',
-        'planting_date',
-        'user_id'
+        'title',
+        'note',
+        'user_id',
     ];
 }

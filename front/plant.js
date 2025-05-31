@@ -34,13 +34,15 @@ async function getPlantas() {
             },
         });
 
+        const data = await response.json();
+
         if (!response.ok) {
-            const data = await response.json();
+            todasPlantas = [];
             console.error(data.data);
+        } else {
+            todasPlantas = data.data
         }
 
-        const data = await response.json();
-        todasPlantas = data.data;
         quantidadeExibida = 3;
         renderizarPlantas();
 

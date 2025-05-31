@@ -1,5 +1,5 @@
-const GARDEN_SERVICE = "http://localhost:8002/api"
-let todasHortas = [];
+const NOTE_SERVICE = "http://localhost:8003/api"
+let todasRelatorios = [];
 let quantidadeExibida = 3;
 let idEditando = null;
 
@@ -10,22 +10,22 @@ function formatDate(dateStr) {
 }
 
 function mostrarLoading() {
-    const container = document.getElementById("lista-hortas");
+    const container = document.getElementById("lista-relatorios");
     container.innerHTML = `
       <div class="loading-container">
         <div class="spinner"></div>
-        <p>Carregando hortas...</p>
+        <p>Carregando anotações...</p>
       </div>
     `;
 }
 
 
 
-async function getHortas() {
+async function getRelatorios() {
     mostrarLoading();
 
     try {
-        const response = await fetch(`${GARDEN_SERVICE}/gardens`, {
+        const response = await fetch(`${NOTE_SERVICE}/reports`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -37,46 +37,47 @@ async function getHortas() {
         const data = await response.json();
 
         if (!response.ok) {
-            todasHortas = [];
+            todasRelatorios = [];
             console.error(data.data);
         } else {
-            todasHortas = data.data
+            todasRelatorios = data.data
         }
 
         quantidadeExibida = 3;
-        renderizarHortas();
+        renderizarRelatorios();
 
     } catch (err) {
+        todasRelatorios = [];
         console.error(err);
     }
 }
 
-function renderizarHortas() {
-    const container = document.getElementById("lista-hortas");
+function renderizarRelatorios() {
+    const container = document.getElementById("lista-relatorios");
 
-    if (!todasHortas.length) {
-        container.innerHTML = "<p>Nenhuma horta registrada.</p>";
+    if (!todasRelatorios.length) {
+        container.innerHTML = "<p>Nenhuma relatorio registrada.</p>";
         return;
     }
 
-    const hortasVisiveis = todasHortas.slice(0, quantidadeExibida);
+    const relatoriosVisiveis = todasRelatorios.slice(0, quantidadeExibida);
 
-    const html = hortasVisiveis.map(horta => `
+    const html = relatoriosVisiveis.map(relatorio => `
       <div class="data-card">
-        <h3>Nome: ${horta.name}</h3>
-        <p>Descrição: ${horta.description}</p>
-        <small>Data de plantio: ${formatDate(horta.planting_date)}</small>
+        <h3>Nome: ${relatorio.title}</h3>
+        <p>Descrição do relatorio: ${relatorio.description}</p>
+        <small>Categoria do relatorio: ${relatorio.report_type}</small>
         <div class="botoes-data">
-            <button onclick='editarHorta(${JSON.stringify(horta)})'>Editar</button>
-            <button onclick='excluirHorta(${JSON.stringify(horta)})'>Excluir</button>
+            <button onclick='editarRelatorio(${JSON.stringify(relatorio)})'>Editar</button>
+            <button onclick='excluirRelatorio(${JSON.stringify(relatorio)})'>Excluir</button>
         </div>
       </div>
     `).join("");
 
-    const temMais = quantidadeExibida < todasHortas.length;
+    const temMais = quantidadeExibida < todasRelatorios.length;
     const temMenos = quantidadeExibida > 3;
 
-    let botoes = `<div class="botoes-hortas">`;
+    let botoes = `<div class="botoes-data">`;
     if (temMais) {
         botoes += `<button onclick="mostrarMais()">Mostrar mais</button>`;
     }
@@ -90,38 +91,38 @@ function renderizarHortas() {
 
 function mostrarMais() {
     quantidadeExibida += 3;
-    renderizarHortas();
+    renderizarRelatorios();
 }
 
 function mostrarMenos() {
     quantidadeExibida = 3;
-    renderizarHortas();
+    renderizarRelatorios();
 }
 
 
 
 document.addEventListener("DOMContentLoaded", () => {
-    document.getElementById("form-horta").addEventListener("submit", async (e) => {
+    document.getElementById("form-relatorio").addEventListener("submit", async (e) => {
         e.preventDefault();
-        await storeGarden();
+        await storePlant();
     });
 
-    getHortas();
+    getRelatorios();
 });
 
-async function storeGarden() {
-    const form = document.getElementById("form-horta");
+async function storePlant() {
+    const form = document.getElementById("form-relatorio");
     const formData = new FormData(form);
 
     const data = {
-        name: formData.get("nome"),
+        title: formData.get("titulo"),
         description: formData.get("descricao"),
-        planting_date: formData.get("data_plantio"),
+        report_type: formData.get("categoria"),
     };
 
     const url = idEditando
-        ? `${GARDEN_SERVICE}/gardens/${idEditando}`
-        : `${GARDEN_SERVICE}/gardens`;
+        ? `${NOTE_SERVICE}/reports/${idEditando}`
+        : `${NOTE_SERVICE}/reports`;
 
     const method = idEditando ? "PUT" : "POST";
 
@@ -146,8 +147,8 @@ async function storeGarden() {
 
         form.reset();
         idEditando = null;
-        document.querySelector('form button[type="submit"]').textContent = "Cadastrar Horta";
-        await getHortas();
+        document.querySelector('form button[type="submit"]').textContent = "Gerar Relatorio";
+        await getRelatorios();
 
     } catch (err) {
         console.error(err);
@@ -155,25 +156,25 @@ async function storeGarden() {
 }
 
 
-function editarHorta(horta) {
-    document.querySelector('input[name="nome"]').value = horta.name;
-    document.querySelector('input[name="data_plantio"]').value = horta.planting_date;
-    document.querySelector('textarea[name="descricao"]').value = horta.description;
+function editarRelatorio(relatorio) {
+    document.querySelector('input[name="titulo"]').value = relatorio.title;
+    document.querySelector('textarea[name="descricao"]').value = relatorio.description;
+    document.querySelector('input[name="categoria"]').value = relatorio.report_type;
 
-    idEditando = horta.id;
+    idEditando = relatorio.id;
 
     document.querySelector("nav").scrollIntoView({ behavior: "smooth" });
 
-    document.querySelector('form button[type="submit"]').textContent = "Atualizar Horta";
+    document.querySelector('form button[type="submit"]').textContent = "Atualizar Relatorio";
 }
 
-async function excluirHorta(horta) {
-    const confirmacao = confirm(`Tem certeza que deseja excluir a horta "${horta.name}"?`);
+async function excluirRelatorio(relatorio) {
+    const confirmacao = confirm(`Tem certeza que deseja excluir o relatorio "${relatorio.title}"?`);
 
     if (!confirmacao) return;
 
     try {
-        const response = await fetch(`${GARDEN_SERVICE}/gardens/${horta.id}`, {
+        const response = await fetch(`${NOTE_SERVICE}/reports/${relatorio.id}`, {
             method: "DELETE",
             headers: {
                 "Accept": "application/json",
@@ -184,15 +185,15 @@ async function excluirHorta(horta) {
         if (!response.ok) {
             const errorData = await response.json();
             console.error("Erro ao excluir:", errorData.message || errorData);
-            alert("Erro ao excluir a horta.");
+            alert("Erro ao excluir a relatorio.");
             return;
         }
 
-        alert(`Horta "${horta.name}" excluída com sucesso.`);
-        await getHortas();
+        alert(`Relatorio "${relatorio.title}" excluída com sucesso.`);
+        await getRelatorios();
 
     } catch (err) {
         console.error("Erro ao excluir:", err);
-        alert("Erro ao excluir a horta.");
+        alert("Erro ao excluir a relatorio.");
     }
 }

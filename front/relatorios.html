@@ -45,20 +45,22 @@
   <hr />
   
   <h1>Relatórios</h1>
-  <form action="" method="POST">
+  <form id="form-relatorio">
     <input type="text" name="titulo" placeholder="Título do Relatório" required />
     <textarea name="descricao" placeholder="Descrição do Relatório" required></textarea>
-    <input type="date" name="data" required />
     <input type="text" name="categoria" placeholder="Categoria do Relatório" required />
     <button type="submit">Gerar Relatório</button>
   </form>
 
   <h2>Relatórios Registrados</h2>
-  <div class="relatorios-container">
 
-  </div>
+  <div id="lista-relatorios"></div>
 
   <script src="menu.js"></script>
   <script src="script.js"></script>
+  <script src="report.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", getRelatorios);
+  </script>
 </body>
 </html>

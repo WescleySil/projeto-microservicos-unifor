@@ -45,17 +45,21 @@
   <hr />
   
   <h1>Anotações</h1>
-  <form action="" method="POST">
+  <form id="form-anotacao">
     <input type="text" name="titulo" placeholder="Título da Anotação" required />
     <textarea name="anotacao" placeholder="Digite sua anotação..." required></textarea>
     <button type="submit">Adicionar Anotação</button>
   </form>
 
   <h2>Minhas Anotações</h2>
-  <ul>
-  </ul>
+
+  <div id="lista-anotacoes"></div>
 
   <script src="menu.js"></script>
   <script src="script.js"></script>
+  <script src="note.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", getAnotacoes);
+  </script>
 </body>
 </html>

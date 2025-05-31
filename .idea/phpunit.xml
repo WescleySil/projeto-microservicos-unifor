@@ -4,8 +4,8 @@
     <option name="directories">
       <list>
         <option value="$PROJECT_DIR$/auth-service/tests" />
-        <option value="$PROJECT_DIR$/horta-service/tests" />
         <option value="$PROJECT_DIR$/relatorio-service/tests" />
+        <option value="$PROJECT_DIR$/horta-service/tests" />
       </list>
     </option>
   </component>
