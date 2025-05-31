@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreGardenRequest;
+use App\Http\Requests\UpdateGardenRequest;
 use App\Models\Garden;
 use Illuminate\Http\Request;
 
@@ -30,5 +31,28 @@ class GardenController extends Controller
         $garden->fill($data);
         $garden->save();
         return response()->json(["data" => $garden], 200);
+    }
+
+    public function update(UpdateGardenRequest $request, Garden $garden)
+    {
+        $user = $request->get('auth_user') ?? null;
+        if (!$user) {
+            return response()->json();
+        }
+        $data = $request->validated();
+        $data['user_id'] = $user['id'];
+        $garden->fill($data);
+        $garden->save();
+        return response()->json(["data" => $garden], 200);
+    }
+
+    public function destroy(Request $request, Garden $garden)
+    {
+        $user = $request->get('auth_user') ?? null;
+        if (!$user) {
+            return response()->json();
+        }
+        $garden->delete();
+        return response()->json(null, 204);
     }
 }
