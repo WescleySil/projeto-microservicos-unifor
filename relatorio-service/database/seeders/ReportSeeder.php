@@ -18,6 +18,7 @@ class ReportSeeder extends Seeder
             'description' => 'lorem ipsum',
             'report_type' => 'Planta',
             'user_id' => 1,
+            'created_at' => now()->subYear()->format('Y-m-d H:i:s'),
         ]);
     }
 }

@@ -18,6 +18,7 @@ class GardenSeeder extends Seeder
             'description' => 'Horta de frutas anciãs',
             'planting_date' => now()->subYear()->format('Y-m-d'),
             'user_id' => 1,
+            'created_at' => now()->subYear()->format('Y-m-d H:i:s'),
         ]);
     }
 }

@@ -17,6 +17,7 @@ class NoteSeeder extends Seeder
             'title' => 'Nota 1',
             'note' => 'lorem ipsum',
             'user_id' => 1,
+            'created_at' => now()->subYear()->format('Y-m-d H:i:s'),
         ]);
     }
 }
