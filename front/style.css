@@ -233,7 +233,7 @@ main {
 }
 
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 899.98px) {
   .card-box.clima-container {
     flex-direction: column;
     align-items: center;
