@@ -14,7 +14,7 @@ body {
   font-family: "Poppins", sans-serif;
 }
 
-/* ========== NAVBAR ========== */
+/* ======= NAVBAR ======= */
 nav {
   display: flex;
   justify-content: space-between;
@@ -44,62 +44,56 @@ nav {
   color: #66b68e;
 }
 
-/* ========== Mobile Menu ========== */
+/* ======= MOBILE MENU ======= */
 .mobile-menu-icon {
   display: none;
   cursor: pointer;
-  width: 50px;
-  height: 50px;
 }
 
-.mobile-menu-icon .icon{
+.mobile-menu-icon .icon {
   width: 35px;
   height: 35px;
   background-color: transparent;
-  margin: 0;
-  padding: 0;
-  transition: all 0.3s ease;
 }
 
-.mobile-menu{
+.mobile-menu {
   display: none;
   flex-direction: column;
   gap: 10px;
 }
 
-@media screen and (max-width: 768px){
-  .bar{
+@media screen and (max-width: 768px) {
+  .bar {
     display: none;
   }
 
-  .mobile-menu-icon{
+  .mobile-menu-icon {
     display: block;
   }
 
-  .mobile-menu-icon button{
+  .mobile-menu-icon button {
     background-color: transparent;
     border: none;
     cursor: pointer;
   }
 
-  .mobile-menu ul{
-    display:flex;
+  .mobile-menu ul {
+    display: flex;
     flex-direction: column;
     text-align: center;
     padding-bottom: 1rem;
   }
 
-  .mobile-menu .nav-item{
-    display: block;
+  .mobile-menu .nav-item {
     padding-top: 1.2rem;
   }
 
-  .open{
+  .open {
     display: block;
   }
 }
 
-/* ========== HERO SECTION ========== */
+/* ======= HERO ======= */
 .hero {
   position: relative;
   width: 100%;
@@ -145,7 +139,6 @@ nav {
 .btn {
   padding: 10px 20px;
   font-size: 1rem;
-  font-family: "Poppins", sans-serif;
   background-color: #66b68e;
   border: none;
   color: #fff;
@@ -158,20 +151,20 @@ nav {
   background-color: #4da176;
 }
 
-/* ========== MAIN SECTION ========== */
+/* ======= MAIN ======= */
 main {
   padding: 2rem;
 }
 
 .main-sections {
   display: flex;
-  flex-wrap: wrap;
   gap: 2rem;
   justify-content: center;
   align-items: flex-start;
+  flex-wrap: nowrap;
 }
 
-/*====== Estilo base dos cards =======*/
+/* ======= CARDS ======= */
 .card-box {
   background-color: #4a3b2a;
   padding: 1.5rem;
@@ -182,7 +175,7 @@ main {
   min-width: 300px;
   height: 400px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
 }
 
 .card-box h3 {
@@ -191,86 +184,81 @@ main {
   margin-bottom: 1rem;
 }
 
-/*========= Relatorios ==========*/
-.card-box.relatorio {
-  background-image: url('./imagens/relatorio.jpg');
+/* ======= CLIMA ======= */
+.card-box.clima-container {
+  width: 100%;
+  max-width: 100%;
+  min-width: unset;
+  height: auto;
+  padding: 2rem;
+  border-radius: 0;
+  background-image: url('./imagens/clima.jpg');
   background-size: cover;
   background-position: center;
   color: white;
   z-index: -1;
-}
-
-/* ========== Informações Gerais ========== */
-.info-geral .card {
   display: flex;
-  flex-direction: column;
-  gap: 1rem;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
 }
 
-.card-box.info-geral {
-  background-image: url('./imagens/info.jpg');
-  background-size: cover;
-  background-position: center;
-  color: white;
-  z-index: -1;
+.clima-header {
+  display: flex;
+  flex-direction: row; 
+  align-items: center; 
+  gap: 8px;
 }
 
-/* ========== Clima ========== */
-.clima-container {
-    background: #4a3b2a;
-    color: #ffffff;
-    border-radius: 10px;
-    padding: 1.5rem;
-    font-family: "Poppins", sans-serif;
-    flex: 1 1 30%;
-    min-width: 300px;
-    max-width: 450px;
-    height: 400px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
+.clima-header img {
+  width: 50px;
+  height: 50px;
+}
 
+.clima-header h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0; 
+}
+
+.clima-info {
+  display: flex;
+  flex-direction: row; 
+  gap: 1.5rem;
+  font-size: 1rem;
+}
+
+.clima-info strong {
+  color: #65e2a4;
+}
+
+
+@media screen and (max-width: 768px) {
   .card-box.clima-container {
-    background-image: url('./imagens/clima.jpg');
-    background-size: cover;
-    background-position: center;
-    color: white;
-    z-index: -1;
-  }
-  
-  
-  .clima-header {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    justify-content: center;
-  }
-  
-  .clima-header img {
-    width: 30px;
-    height: 30px;
-  }
-  
-  .clima-header h3 {
-    font-size: 1.5rem;
-    margin: 0;
-  }
-  
-  .clima-info {
-    display: flex;
     flex-direction: column;
-    gap: 0.75rem;
-    font-size: 14px;
-  }
-  
-  .clima-info strong {
-    color: #65e2a4;
+    align-items: center;
+    text-align: left;
+    gap: 1rem;
+    padding: 1rem;
   }
 
-/* ========= Geral Sombra Box ========== */
-  .card-box.relatorio::before,
+  .clima-info {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .clima-header h3 {
+    font-size: 1.2rem;
+  }
+
+  .clima-header img {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+
+.card-box.relatorio::before,
 .card-box.info-geral::before,
 .card-box.clima-container::before {
   content: "";
@@ -279,8 +267,8 @@ main {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.6); 
-  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: inherit;
   z-index: 0;
 }
 
@@ -298,21 +286,7 @@ main {
   z-index: 2;
 }
 
-.card-box .clima-info,
-.card-box .info-geral .card,
-.card-box .relatorio {
-  display: flex;
-  flex-direction: column;
-  gap: 2.5rem; 
-}
-
-.info-geral .card,
-.card-box.relatorio {
-  display: flex;
-  flex-direction: column;
-  gap: 2.5rem; 
-}
-/* ========== FOOTER ========== */
+/* ======= FOOTER ======= */
 footer {
   text-align: center;
   font-size: 0.8rem;
@@ -320,4 +294,53 @@ footer {
   background-color: #2d1e13;
   margin-top: 2rem;
   color: #fff;
+}
+
+
+.carousel {
+  position: fixed;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 1rem;
+  background-color: rgba(20, 20, 20, 0.6);
+  border-left: 3px solid #00ffe5;
+  border-radius: 10px 0 0 10px;
+  z-index: 999;
+}
+
+.carousel img {
+  width: 120px;
+  height: 80px;
+  object-fit: cover;
+  border: 2px solid #00ffe5;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.carousel img:hover {
+  transform: scale(1.05);
+}
+
+.carousel button {
+  background-color: transparent;
+  border: none;
+  color: #00ffe5;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: color 0.3s ease;
+}
+
+.carousel button:hover {
+  color: #66b68e;
+}
+
+
+@media screen and (max-width: 768px) {
+  .carousel {
+    display: none;
+  }
 }
